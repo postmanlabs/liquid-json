@@ -4,7 +4,8 @@
   "description": "Implementation of JSON that ignores BOM and thows friendly error",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node npm/test.js",
+    "test-unit": "node npm/test-unit.js"
   },
   "author": "Postman Labs <help@getpostman.com> (=)",
   "license": "Apache-2.0",
@@ -23,5 +24,16 @@
   "bugs": {
     "url": "https://github.com/postmanlabs/liquid-json/issues"
   },
-  "homepage": "https://github.com/postmanlabs/liquid-json#readme"
+  "homepage": "https://github.com/postmanlabs/liquid-json#readme",
+  "devDependencies": {
+    "async": "2.0.1",
+    "colors": "1.1.2",
+    "expect.js": "0.3.1",
+    "mocha": "3.0.2",
+    "pretty-ms": "2.1.0",
+    "shelljs": "0.7.4"
+  },
+  "engines": {
+    "node": ">=4"
+  }
 }
