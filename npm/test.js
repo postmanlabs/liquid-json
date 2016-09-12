@@ -6,6 +6,7 @@ var prettyms = require('pretty-ms'),
     startedAt = Date.now();
 
 require('async').series([
+    require('./test-lint'),
     require('./test-unit')
 ], function (code) {
     console.info(`\nliquid-json: duration ${prettyms(Date.now() - startedAt)}\nliquid-json: ${code ? 'not ok' : 'ok'}!`[code ?

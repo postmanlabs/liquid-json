@@ -8,7 +8,7 @@ var path = require('path'),
     testInput = {
         number: 12,
         utf8: 'ï»¿string',
-        utf16: '﻿string', // @todo: find a sample for this kind of BOM
+        utf16: String.fromCharCode(0xFEFF) + '﻿string',
         utf32: '뮿string',
         utf16BigEndian: 'þÿstring',
         utf16LittleEndian: 'ÿþstring'
