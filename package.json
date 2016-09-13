@@ -1,6 +1,6 @@
 {
   "name": "liquid-json",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Implementation of JSON that ignores BOM and thows friendly error",
   "main": "index.js",
   "scripts": {
