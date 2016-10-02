@@ -1,7 +1,5 @@
-var path = require('path'),
-
-    expect = require('expect.js'),
-    bomb = require(path.join(__dirname, '..', '..', 'lib', 'bomb')),
+var expect = require('expect.js'),
+    bomb = require('../../lib/bomb'),
 
     TEST_STRING = 'string',
 
