@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "node npm/test.js",
-    "test-unit": "node npm/test-unit.js",
     "test-lint": "node npm/test-lint.js",
+    "test-system": "node npm/test-system.js",
+    "test-unit": "node npm/test-unit.js",
     "test-browser": "node npm/test-browser.js"
   },
   "author": "Postman Labs <help@getpostman.com> (=)",
@@ -36,14 +37,18 @@
     "eslint-plugin-mocha": "4.5.1",
     "eslint-plugin-security": "1.2.0",
     "expect.js": "0.3.1",
+    "js-yaml": "3.6.1",
     "karma": "1.3.0",
     "karma-browserify": "5.1.0",
     "karma-chrome-launcher": "0.2.3",
     "karma-mocha": "1.2.0",
     "karma-mocha-reporter": "2.2.0",
+    "lodash": "4.16.2",
     "mocha": "3.0.2",
+    "nsp": "2.6.1",
     "pretty-ms": "2.1.0",
     "shelljs": "0.7.4",
+    "strip-json-comments": "2.0.1",
     "watchify": "3.7.0"
   },
   "engines": {
