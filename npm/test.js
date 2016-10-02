@@ -7,6 +7,7 @@ var prettyms = require('pretty-ms'),
 
 require('async').series([
     require('./test-lint'),
+    require('./test-system'),
     require('./test-unit')
 ], function (code) {
     // eslint-disable-next-line max-len
