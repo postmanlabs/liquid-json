@@ -7,7 +7,8 @@ var prettyms = require('pretty-ms'),
 
 require('async').series([
     require('./test-lint'),
-    require('./test-unit')
+    require('./test-unit'),
+    process.env.CI ? function (done) { done(); } : require('./test-browser')
 ], function (code) {
     // eslint-disable-next-line max-len
     console.info(`\nliquid-json: duration ${prettyms(Date.now() - startedAt)}\nliquid-json: ${code ? 'not ok' : 'ok'}!`[code ?
