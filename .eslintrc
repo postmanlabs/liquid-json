@@ -13,7 +13,7 @@
         // Possible Errors
         "comma-dangle": ["error", "never"],
         "no-cond-assign": "error",
-        "no-console": ["error", { allow: ["info", "warn", "error"] }],
+        "no-console": ["error", { "allow": ["info", "warn", "error"] }],
         "no-constant-condition": "error",
         "no-control-regex": "error",
         "no-debugger": "error",
@@ -141,7 +141,7 @@
         "id-match": "error",
         "indent": ["error", 4, {
             "VariableDeclarator": { "var": 1, "let": 1, "const": 1 },
-            "SwitchCase": 1,
+            "SwitchCase": 1
         }],
         "jsx-quotes": ["error", "prefer-single"],
         "key-spacing": "error",
