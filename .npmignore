@@ -37,3 +37,6 @@ Thumbs.db
 *.LOCAL.*
 *.REMOTE.*
 *.orig
+
+# Prevent code coverage from being published
+.coverage
