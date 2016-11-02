@@ -3,7 +3,8 @@
  * content of the file as well. Any change to package.json must be accompanied by valid test case in this spec-sheet.
  */
 var _ = require('lodash'),
-    expect = require('expect.js');
+    expect = require('expect.js'),
+    parseIgnore = require('parse-gitignore');
 
 /* global describe, it */
 describe('repository', function () {
@@ -104,27 +105,34 @@ describe('repository', function () {
         });
     });
 
-    describe('.gitignore file', function () {
-        it('must exist', function () {
-            expect(fs.existsSync('./.gitignore')).to.be.ok();
+    describe('.ignore files', function () {
+        var gitignorePath = '.gitignore',
+            npmignorePath = '.npmignore',
+            npmignore = parseIgnore(npmignorePath),
+            gitignore = parseIgnore(gitignorePath);
+
+        describe(gitignorePath, function () {
+            it('must exist', function (done) {
+                fs.stat(gitignorePath, done);
+            });
+
+            it('must have valid content', function () {
+                expect(_.isEmpty(gitignore)).to.not.be.ok();
+            });
         });
 
-        it('must have readable content', function () {
-            expect(fs.readFileSync('./.gitignore').toString()).to.be.ok();
+        describe(npmignorePath, function () {
+            it('must exist', function (done) {
+                fs.stat(npmignorePath, done);
+            });
+
+            it('must have valid content', function () {
+                expect(_.isEmpty(npmignore)).to.not.be.ok();
+            });
         });
-    });
 
-    describe('.npmignore file', function () {
-        it('must exist', function () {
-            expect(fs.existsSync('./.npmignore')).to.be.ok();
-        });
-
-        it('must be a superset of .gitignore (.npmi = .npmi + .gi)', function () {
-            // normalise the ignore file text contents
-            var gi = fs.readFileSync('./.gitignore').toString().replace(/#.*\n/g, '\n').replace(/\n+/g, '\n'),
-                npmi = fs.readFileSync('./.npmignore').toString().replace(/#.*\n/g, '\n').replace(/\n+/g, '\n');
-
-            expect(npmi.substr(-gi.length)).to.eql(gi);
+        it('.gitignore coverage must be a subset of .npmignore coverage', function () {
+            expect(_.intersection(gitignore, npmignore)).to.eql(gitignore);
         });
     });
 
