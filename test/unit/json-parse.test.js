@@ -24,7 +24,7 @@ describe('json.parse', function () {
             });
         });
 
-        it('should parse a string with BOM', function () {
+        it('should parse a string with BOM', function (done) {
             LJSON.async.parse('ï»¿{"a":true}', function (err, json) {
                 if (err) { return done(err); }
 
