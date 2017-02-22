@@ -4,7 +4,7 @@
 * Fixed invalid hasBOM reference error
 
 #### 0.3.0 (September 13, 2016)
-* Added vaild test configuration, fixed linting issues
+* Added valid test configuration, fixed linting issues
 * Added lib/bomb.js unit tests, associated dependencies, and scripts
 * Improved BOM detection method name, reverted trim method change
 * Added lib/bomb.js unit tests, associated dependencis, and scripts
