@@ -9,7 +9,7 @@ require('async').series([
     require('./test-lint'),
     require('./test-system'),
     require('./test-unit'),
-    process.env.CI ? function (done) { done(); } : require('./test-browser')
+    require('./test-browser')
 ], function (code) {
     // eslint-disable-next-line max-len
     console.info(`\nliquid-json: duration ${prettyms(Date.now() - startedAt)}\nliquid-json: ${code ? 'not ok' : 'ok'}!`[code ?
