@@ -2,7 +2,7 @@
  * @fileOverview Ensures nsprc is as expected
  */
 
-var expect = require('expect.js'),
+var expect = require('chai').expect,
     fs = require('fs');
 
 /* global describe, it, before */
@@ -14,7 +14,7 @@ describe('nsprc', function () {
     });
 
     it('must exist', function () {
-        expect(nsprc).to.be.ok();
+        expect(nsprc).to.be.ok;
     });
 
     it('must not have any exclusion', function () {
