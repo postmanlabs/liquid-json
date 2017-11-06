@@ -1,4 +1,4 @@
-var expect = require('expect.js'),
+var expect = require('chai').expect,
     LJSON = require('../../');
 
 describe('json.stringify', function () {

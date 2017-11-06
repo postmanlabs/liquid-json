@@ -6,13 +6,13 @@
 
 require('shelljs/global');
 
-var colors = require('colors/safe'),
+var chalk = require('chalk'),
     path = require('path'),
 
     KARMA_CONFIG_PATH = path.join(__dirname, '..', 'test', 'karma.conf');
 
 module.exports = function (exit) {
-    console.info(colors.yellow.bold('Running unit tests within browser...'));
+    console.info(chalk.yellow.bold('Running unit tests within browser...'));
 
     var KarmaServer = require('karma').Server;
     (new KarmaServer({ // eslint-disable no-new
