@@ -8,7 +8,9 @@
     "test-lint": "node npm/test-lint.js",
     "test-system": "node npm/test-system.js",
     "test-unit": "node npm/test-unit.js",
-    "test-browser": "node npm/test-browser.js"
+    "test-browser": "node npm/test-browser.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "Postman Labs <help@getpostman.com> (=)",
   "license": "Apache-2.0",
@@ -46,7 +48,7 @@
     "karma-mocha-reporter": "2.2.5",
     "lodash": "4.17.10",
     "mocha": "5.2.0",
-    "nsp": "2.8.1",
+    "nsp": "3.0.0",
     "nyc": "12.0.2",
     "parse-gitignore": "0.3.1",
     "pretty-ms": "3.2.0",
@@ -57,5 +59,9 @@
   },
   "engines": {
     "node": ">=4"
+  },
+  "snyk": true,
+  "dependencies": {
+    "snyk": "^1.91.0"
   }
 }
