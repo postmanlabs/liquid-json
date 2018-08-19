@@ -1,18 +1,18 @@
 #!/usr/bin/env node
 require('shelljs/global');
-require('colors');
 
-var prettyms = require('pretty-ms'),
+var chalk = require('chalk'),
+    prettyms = require('pretty-ms'),
     startedAt = Date.now();
 
 require('async').series([
     require('./test-lint'),
     require('./test-system'),
     require('./test-unit'),
-    process.env.CI ? function (done) { done(); } : require('./test-browser')
+    require('./test-browser')
 ], function (code) {
-    // eslint-disable-next-line max-len
-    console.info(`\nliquid-json: duration ${prettyms(Date.now() - startedAt)}\nliquid-json: ${code ? 'not ok' : 'ok'}!`[code ?
-        'red' : 'green']);
+    console.info(chalk[code ?
+        // eslint-disable-next-line max-len
+        'red' : 'green'](`\nliquid-json: duration ${prettyms(Date.now() - startedAt)}\nliquid-json: ${code ? 'not ok' : 'ok'}!`));
     exit(code && (typeof code === 'number' ? code : 1) || 0);
 });

@@ -1,29 +1,46 @@
 #!/usr/bin/env node
 require('shelljs/global');
-require('colors');
 
-var fs = require('fs'),
-    path = require('path'),
+var NYC = require('nyc'),
+    chalk = require('chalk'),
     Mocha = require('mocha'),
+    recursive = require('recursive-readdir'),
 
+    COV_REPORT_PATH = '.coverage',
     SPEC_SOURCE_DIR = './test/unit';
 
 module.exports = function (exit) {
     // banner line
-    console.info('Running unit tests using mocha...'.yellow.bold);
+    console.info(chalk.yellow.bold('Running unit tests using mocha...'));
 
-    var mocha = new Mocha();
+    test('-d', COV_REPORT_PATH) && rm('-rf', COV_REPORT_PATH);
+    mkdir('-p', COV_REPORT_PATH);
 
-    fs.readdir(SPEC_SOURCE_DIR, function (err, files) {
-        files.filter(function (file) {
+    var nyc = new NYC({
+        reporter: ['text', 'lcov'],
+        reportDir: COV_REPORT_PATH,
+        tempDirectory: COV_REPORT_PATH
+    });
+
+    nyc.wrap();
+    // add all spec files to mocha
+    recursive(SPEC_SOURCE_DIR, function (err, files) {
+        if (err) { console.error(err); return exit(1); }
+
+        var mocha = new Mocha({ timeout: 1000 * 60 });
+
+        files.filter(function (file) { // extract all test files
             return (file.substr(-8) === '.test.js');
-        }).forEach(function (file) {
-            mocha.addFile(path.join(SPEC_SOURCE_DIR, file));
-        });
+        }).forEach(mocha.addFile.bind(mocha));
 
-        // start the mocha run
-        mocha.run(exit);
-        mocha = null; // cleanup
+        mocha.run(function (runError) {
+            runError && console.error(runError.stack || runError);
+
+            nyc.reset();
+            nyc.writeCoverageFile();
+            nyc.report();
+            exit(runError ? 1 : 0);
+        });
     });
 };
 
