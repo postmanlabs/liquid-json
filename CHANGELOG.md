@@ -1,5 +1,10 @@
 # Postman Liquid-JSON changelog
 
+#### Unreleases
+* Added async API
+* (Breaking) Deprecate node v4
+* (chore) dependency updates
+
 #### 0.3.1 (September 26, 2016)
 * Fixed invalid hasBOM reference error
 
