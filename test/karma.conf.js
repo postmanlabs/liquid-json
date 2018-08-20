@@ -75,7 +75,7 @@ module.exports = function (config) {
         }
     };
 
-    if (process.env.TRAVIS) {
+    if (process.env.TRAVIS) { // eslint-disable-line no-process-env
         configuration.customLaunchers = {
             chromeTravis: {
                 base: 'Chrome',
