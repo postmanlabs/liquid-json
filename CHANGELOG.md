@@ -1,6 +1,6 @@
 # Postman Liquid-JSON changelog
 
-#### Unreleases
+#### Unreleased or in beta
 * Added async API
 * (Breaking) Deprecate node v4
 * (chore) dependency updates
