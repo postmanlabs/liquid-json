@@ -1,7 +1,5 @@
-var path = require('path'),
-
-    expect = require('expect.js'),
-    bomb = require(path.join(__dirname, '..', '..', 'lib', 'bomb')),
+var expect = require('chai').expect,
+    bomb = require('../../lib/bomb'),
 
     TEST_STRING = 'string',
 
@@ -19,39 +17,39 @@ describe('lib/bomb', function () {
         // edge cases
         describe('edge case', function () {
             it('returns an unchanged value for undefined / no input', function () {
-                expect(bomb.trim()).to.be(undefined);
+                expect(bomb.trim()).to.equal(undefined);
             });
 
             it('returns and unchanged value for non string input', function () {
-                expect(bomb.trim(testInput.number)).to.be(testInput.number);
+                expect(bomb.trim(testInput.number)).to.equal(testInput.number);
             });
         });
 
         // regular string input
         it('returns an unchanged value for regular string input', function () {
-            expect(bomb.trim(TEST_STRING)).to.be(TEST_STRING);
+            expect(bomb.trim(TEST_STRING)).to.equal(TEST_STRING);
         });
 
         // BOM compliant string input tests
         describe('BOM removal', function () {
             it.skip('correctly removes UTF-16 BOM', function () { // @todo: unskip after a utf16 BOM has been found
-                expect(bomb.trim(testInput.utf16)).to.be(TEST_STRING);
+                expect(bomb.trim(testInput.utf16)).to.equal(TEST_STRING);
             });
 
             it('correctly removes UTF-32 BOM', function () {
-                expect(bomb.trim(testInput.utf32)).to.be(TEST_STRING);
+                expect(bomb.trim(testInput.utf32)).to.equal(TEST_STRING);
             });
 
             it('correctly removes big endian UTF-16 BOM', function () {
-                expect(bomb.trim(testInput.utf16BigEndian)).to.be(TEST_STRING);
+                expect(bomb.trim(testInput.utf16BigEndian)).to.equal(TEST_STRING);
             });
 
             it('correctly removes little endian UTF-16 BOM', function () {
-                expect(bomb.trim(testInput.utf16LittleEndian)).to.be(TEST_STRING);
+                expect(bomb.trim(testInput.utf16LittleEndian)).to.equal(TEST_STRING);
             });
 
             it('correctly removes UTF-8 BOM', function () {
-                expect(bomb.trim(testInput.utf8)).to.be(TEST_STRING);
+                expect(bomb.trim(testInput.utf8)).to.equal(TEST_STRING);
             });
         });
     });
