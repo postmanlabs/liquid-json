@@ -36,12 +36,6 @@ describe('travis.yml', function () {
             expect(travisYAML.addons).to.eql({ apt: { packages: ['google-chrome-stable'] } });
         });
 
-        it('should have a valid before_install sequence', function () {
-            expect(travisYAML.before_install).to.eql([
-                'export CHROME_BIN=google-chrome', 'export DISPLAY=:99.0', 'sh -e /etc/init.d/xvfb start', 'sleep 3'
-            ]);
-        });
-
         it('should have a valid Slack notification token', function () {
             expect(travisYAML.notifications.slack.secure).to.be.ok;
         });

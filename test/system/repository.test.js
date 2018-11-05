@@ -105,6 +105,16 @@ describe('repository', function () {
         });
     });
 
+    describe('.gitattributes', function () {
+        it('must exist', function () {
+            expect(fs.existsSync('./.gitattributes')).to.be.ok;
+        });
+
+        it('must have readable content', function () {
+            expect(fs.readFileSync('./.gitattributes').toString()).to.be.ok;
+        });
+    });
+
     describe('.ignore files', function () {
         var gitignorePath = '.gitignore',
             npmignorePath = '.npmignore',
