@@ -1,0 +1,36 @@
+master:
+  breaking changes:
+    Deprecate node v4
+  new features:
+    - Added async API
+  chores:
+    - dependency updates
+
+
+0.3.1:
+  date: 2016-09-26
+  fixed bugs:
+    - 'Fixed invalid hasBOM reference error'
+
+
+0.3.0:
+  date: 2016-09-13
+  new features:
+    - 'Added valid test configuration'
+    - 'Added lib/bomb.js unit tests, associated dependencies, and scripts'
+    - 'Improved BOM detection method name, reverted trim method change'
+    - 'Added lib/bomb.js unit tests, associated dependencis, and scripts'
+  fixed bugs:
+    - 'fixed linting issues'
+
+
+0.2.0:
+  date: 2016-08-25
+  new features:
+    - 'Using the hex codes as constant'
+
+
+0.1.0:
+  date: 2016-08-25
+  initial release:
+    - 'Added initial codebase for 0.1.0'
