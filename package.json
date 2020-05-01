@@ -8,7 +8,9 @@
     "test-lint": "node npm/test-lint.js",
     "test-system": "node npm/test-system.js",
     "test-unit": "node npm/test-unit.js",
-    "test-browser": "node npm/test-browser.js"
+    "test-browser": "node npm/test-browser.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "Postman Labs <help@getpostman.com> (=)",
   "license": "Apache-2.0",
@@ -64,5 +66,9 @@
     "ignore": [
       "eslint-plugin-jsdoc"
     ]
+  },
+  "snyk": true,
+  "dependencies": {
+    "snyk": "^1.316.1"
   }
 }
