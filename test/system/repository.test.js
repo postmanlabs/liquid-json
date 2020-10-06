@@ -70,12 +70,6 @@ describe('repository', function () {
                     expect(dep).be.ok;
                 });
             });
-
-            it('must point to specific package version; (*, ^, ~) not expected', function () {
-                _.forEach(json.devDependencies, function (dep) {
-                    expect(dep).be.match(/^\d/);
-                });
-            });
         });
 
         describe('main entry script', function () {

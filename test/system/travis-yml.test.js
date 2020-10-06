@@ -29,7 +29,7 @@ describe('travis.yml', function () {
 
         it('language must be set to node', function () {
             expect(travisYAML.language).to.equal('node_js');
-            expect(travisYAML.node_js).to.eql(['6', '8', '10']);
+            expect(travisYAML.node_js).to.eql(['10', '12', '14']);
         });
 
         it('should have a valid Slack notification token', function () {
